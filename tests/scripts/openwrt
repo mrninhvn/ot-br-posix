@@ -52,6 +52,8 @@ do_prepare()
     docker cp feeds.conf "${CONTAINER_NAME}":/home/build/openwrt/feeds.conf
     docker exec "${CONTAINER_NAME}" sudo chown -R build:build /home/build/ot-br-posix /home/build/openwrt/feeds.conf /home/build/openwrt/bin
     docker exec "${CONTAINER_NAME}" scripts/feeds update openthread
+    docker exec "${CONTAINER_NAME}" scripts/diffconfig.sh > /home/build/ot-br-posix/etc/openwrt/openthread-br/diffconfig
+    cp /home/build/ot-br-posix/etc/openwrt/openthread-br/diffconfig .config
     docker exec "${CONTAINER_NAME}" make defconfig
     docker exec "${CONTAINER_NAME}" scripts/feeds install openthread-br
 }
