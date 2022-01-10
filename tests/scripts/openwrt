@@ -40,7 +40,8 @@ readonly CONTAINER_NAME=openwrt-sdk
 
 do_prepare()
 {
-    docker create --name "${CONTAINER_NAME}" --rm -v openwrt-bin:/home/build/openwrt/bin -it openwrtorg/sdk
+    # docker create --name "${CONTAINER_NAME}" --rm -v openwrt-bin:/home/build/openwrt/bin -it openwrtorg/sdk
+    docker create --name "${CONTAINER_NAME}" -v openwrt-bin:/home/build/openwrt/bin -it openwrtorg/sdk
     docker cp . "${CONTAINER_NAME}":/home/build/ot-br-posix
     echo 'src-link openthread /home/build/ot-br-posix/etc/openwrt' >feeds.conf
 
@@ -64,15 +65,15 @@ do_build()
 do_clean()
 {
     local exit_code=$?
-    # rm feeds.conf || true
-    # docker stop "${CONTAINER_NAME}" || true
+    rm feeds.conf || true
+    docker stop "${CONTAINER_NAME}" || true
     exit $exit_code
 }
 
 main()
 {
     if [[ $# == 0 ]]; then
-        # trap do_clean EXIT
+        trap do_clean EXIT
         do_prepare
         do_build
     else
@@ -83,9 +84,9 @@ main()
             build)
                 do_build
                 ;;
-            # clean)
-            #     do_clean
-            #     ;;
+            clean)
+                do_clean
+                ;;
         esac
     fi
 }
