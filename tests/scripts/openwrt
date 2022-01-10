@@ -63,10 +63,10 @@ do_build()
 
 do_clean()
 {
-    local exit_code=$?
-    rm feeds.conf || true
-    docker stop "${CONTAINER_NAME}" || true
-    exit $exit_code
+    # local exit_code=$?
+    # rm feeds.conf || true
+    # docker stop "${CONTAINER_NAME}" || true
+    # exit $exit_code
 }
 
 main()
