@@ -72,7 +72,7 @@ do_clean()
 main()
 {
     if [[ $# == 0 ]]; then
-        trap do_clean EXIT
+        # trap do_clean EXIT
         do_prepare
         do_build
     else
@@ -83,6 +83,9 @@ main()
             build)
                 do_build
                 ;;
+            # clean)
+            #     do_clean
+            #     ;;
         esac
     fi
 }
