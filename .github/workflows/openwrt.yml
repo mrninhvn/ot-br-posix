@@ -61,12 +61,11 @@ jobs:
     #   run: script/test openwrt
 
     - name: Build
-      run: tests/scripts/openwrt
+      run: script/openwrt_build
 
     - name: Upload build files
       uses: actions/upload-artifact@v2
       with:
         name: Border Router on OpenWRT
         path: |
-          /home/build/ot-br-posix/etc/openwrt/
-          build/ot-br-posix/etc/openwrt/
+          /home/build/openwrt/bin/packages/x86_64/openthread/openthread-br_1.0-1_x86_64.ipk
