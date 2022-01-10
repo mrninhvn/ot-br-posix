@@ -35,6 +35,9 @@ PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 PKG_RELEASE:=1
 PKG_VERSION:=1.0
+ARCH:=mips
+CPU_TYPE:=24kc
+CROSS_COMPILE:=mips-openwrt-linux-uclibc-
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
@@ -49,7 +52,6 @@ CMAKE_OPTIONS+= \
 	-DOTBR_OPENWRT=ON
 
 define Package/openthread-br
-	PKGARCH:=all
 	SECTION:=base
 	CATEGORY:=Network
 	TITLE:=OpenThread Border Router
