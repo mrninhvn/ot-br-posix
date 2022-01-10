@@ -61,7 +61,7 @@ jobs:
     #   run: script/test openwrt
 
     - name: Build
-      run: script/openwrt_build
+      run: tests/scripts/openwrt_build
 
     - name: Upload build files
       uses: actions/upload-artifact@v2
