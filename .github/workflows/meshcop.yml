@@ -29,12 +29,13 @@
 name: MeshCoP
 
 on:
-  push:
-    branches-ignore:
-      - 'dependabot/**'
-  pull_request:
-    branches:
-      - 'main'
+  # push:
+  #   branches-ignore:
+  #     - 'dependabot/**'
+  # pull_request:
+  #   branches:
+  #     - 'main'
+  workflow_dispatch:
 
 jobs:
 

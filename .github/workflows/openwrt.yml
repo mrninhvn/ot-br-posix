@@ -35,6 +35,7 @@ on:
   pull_request:
     branches:
       - 'main'
+  workflow_dispatch:
 
 jobs:
 
@@ -56,8 +57,11 @@ jobs:
       env:
         BUILD_TARGET: "openwrt-check"
       run: tests/scripts/bootstrap.sh
-    - name: Check
-      run: script/test openwrt
+    # - name: Check
+    #   run: script/test openwrt
+
+    - name: Build
+      run: tests/scripts/openwrt
 
     - name: Upload build files
       uses: actions/upload-artifact@v2
@@ -65,3 +69,4 @@ jobs:
         name: Border Router on OpenWRT
         path: |
           /home/build/ot-br-posix/etc/openwrt/
+          build/ot-br-posix/etc/openwrt/
