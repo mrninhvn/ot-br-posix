@@ -68,4 +68,5 @@ jobs:
       with:
         name: Border Router on OpenWRT
         path: |
-          ./bin/packages/x86_64/openthread/openthread-br_1.0-1_x86_64.ipk
+          /home/build/openwrt/bin/packages/x86_64/openthread/openthread-br_1.0-1_x86_64.ipk
+          /home/build/openwrt/bin/
