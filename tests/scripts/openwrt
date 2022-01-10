@@ -60,8 +60,8 @@ do_build()
 {
     docker exec "${CONTAINER_NAME}" make V=sc package/openthread-br/compile
     docker exec "${CONTAINER_NAME}" find . -name "${PACKAGE_NAME}*.ipk" | grep "${PACKAGE_NAME}"
-    mkdir build
-    cp -R /home/build/openwrt/bin/ build/
+    mkdir ./build
+    docker cp -R "${CONTAINER_NAME}":/home/build/openwrt/bin/ ./build/
 }
 
 do_clean()
