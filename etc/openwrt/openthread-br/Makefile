@@ -49,6 +49,7 @@ CMAKE_OPTIONS+= \
 	-DOTBR_OPENWRT=ON
 
 define Package/openthread-br
+	PKGARCH:=all
 	SECTION:=base
 	CATEGORY:=Network
 	TITLE:=OpenThread Border Router
