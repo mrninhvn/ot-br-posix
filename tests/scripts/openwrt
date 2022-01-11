@@ -54,6 +54,8 @@ do_prepare()
     docker exec "${CONTAINER_NAME}" scripts/feeds update openthread
     docker exec "${CONTAINER_NAME}" make defconfig
     docker exec "${CONTAINER_NAME}" scripts/feeds install openthread-br
+    mkdir config
+    docker cp "${CONTAINER_NAME}":/home/build/openwrt/feeds.conf config/
 }
 
 do_build()
