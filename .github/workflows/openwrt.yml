@@ -69,3 +69,4 @@ jobs:
         name: Border Router on OpenWRT
         path: |
           build/
+          config/
