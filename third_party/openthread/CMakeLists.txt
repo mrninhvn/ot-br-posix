@@ -84,7 +84,7 @@ if (OTBR_DNSSD_DISCOVERY_PROXY)
 endif()
 
 if (NOT OT_POSIX_SETTINGS_PATH)
-    set(OT_POSIX_SETTINGS_PATH "\"/var/lib/thread\"" CACHE STRING "set the directory to store Thread data" FORCE)
+    set(OT_POSIX_SETTINGS_PATH "\"/etc/thread\"" CACHE STRING "set the directory to store Thread data" FORCE)
 endif()
 
 add_subdirectory(repo EXCLUDE_FROM_ALL)
@@ -94,4 +94,5 @@ target_compile_definitions(ot-config INTERFACE
     "-DOPENTHREAD_CONFIG_MAX_STATECHANGE_HANDLERS=3"
     "-DOPENTHREAD_CONFIG_MLE_STEERING_DATA_SET_OOB_ENABLE=1"
     "-DOPENTHREAD_CONFIG_TMF_PROXY_DUA_ENABLE=$<BOOL:${OTBR_DUA_ROUTING}>"
+    "-DOPENTHREAD_POSIX_CONFIG_DAEMON_SOCKET_BASENAME=\"/tmp/run/openthread-%s\""
 )
